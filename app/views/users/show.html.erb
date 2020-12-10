@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-4">
+         <div class="text-center">
+             <p>ユーザー情報</p>
+         </div>
+         <table class="table">
+             <tr>
+                 <td>名前:</td>
+                 <td><%= @user.name %></td>
+             </tr>    
+        　　 <tr>
+                 <td>年齢:</td>
+                 <td><%= @user.age %></td>
+             </tr>    
+              <tr>
+                 <td>野球経験:</td>
+                 <td><%= @user.baseball_experience %></td>
+             </tr> 
+         </table>
+         <div class="text-right">    
+         <%= link_to 'ユーザー情報を編集', edit_user_path, class: 'btn btn-lg btn-primary' %>
+         </div> 
+    </div>
+</div>
