@@ -1,24 +1,61 @@
-<div class="row">
-    <div class="col-sm-4">
-         <div class="text-center">
-             <p>ユーザー情報</p>
-         </div>
-         <table class="table">
-             <tr>
-                 <td>名前:</td>
-                 <td><%= @user.name %></td>
-             </tr>    
-        　　 <tr>
-                 <td>年齢:</td>
-                 <td><%= @user.age %></td>
-             </tr>    
-              <tr>
-                 <td>野球経験:</td>
-                 <td><%= @user.baseball_experience %></td>
-             </tr> 
-         </table>
-         <div class="text-right">    
-         <%= link_to 'ユーザー情報を編集', edit_user_path, class: 'btn btn-lg btn-primary' %>
-         </div> 
+<% if current_user == @user %>
+    <div class="row">
+        <div class="col-sm-4">
+             <div class="text-center">
+                 <h1>ユーザー情報</h1>
+             </div>
+             <table class="table">
+                 <tr>
+                     <td>名前:</td>
+                     <td><%= @user.name %></td>
+                 </tr>    
+                 <tr>
+                     <td>年齢:</td>
+                     <td><%= @user.age %></td>
+                 </tr>    
+                  <tr>
+                     <td>野球経験:</td>
+                     <td><%= @user.baseball_experience %></td>
+                 </tr> 
+             </table>
+             <div class="text-right mb-2">    
+             <%= link_to 'ユーザー情報を編集', edit_user_path, class: 'btn btn-lg btn-primary' %>
+             </div> 
+             <div class="text-right mb-2">    
+             <%= link_to 'チームを登録する', new_team_information_path, class: 'btn btn-lg btn-success' %>
+             </div> 
+        </div>
+        <div class="col-sm-8">
+            <h1 class="text-center">チーム情報</h1>
+            <%= render 'team_informations/team_informations', team_informations: @team_informations %>
+        </div>
+      
     </div>
-</div>
+<% else %>
+    <div class="row">
+        <div class="col-sm-4">
+             <div class="text-center">
+                 <h1>ユーザー情報</h1>
+             </div>
+             <table class="table">
+                 <tr>
+                     <td>名前:</td>
+                     <td><%= @user.name %></td>
+                 </tr>    
+                 <tr>
+                     <td>年齢:</td>
+                     <td><%= @user.age %></td>
+                 </tr>    
+                  <tr>
+                     <td>野球経験:</td>
+                     <td><%= @user.baseball_experience %></td>
+                 </tr> 
+             </table>
+        </div>
+        <div class="col-sm-8">
+            <h1 class="text-center">チーム情報</h1>
+            <%= render 'team_informations/team_informations', team_informations: @team_informations %>
+        </div>
+      
+    </div>
+<% end %>

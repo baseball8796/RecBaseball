@@ -2,8 +2,9 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in,only: [:show]
   def show
     @user = User.find(params[:id])
-    
+    @team_informations = @user.team_informations.order(id: :desc).page(params[:page]).per(1)
   end
+  
 
   def new
     @user = User.new
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
   
 private
 

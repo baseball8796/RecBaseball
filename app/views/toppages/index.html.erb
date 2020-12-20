@@ -4,9 +4,14 @@
       <h1>草野球メンバー募集</h1>
     </div>
   </div>
-  <div class = 'text-center'>
-      <h3>こちらは、京都の草野球チームの選手を募集するサイトです
-      <br><br>自由に募集してメンバーを集めてください
+  <div class = "text-center">
+      <h3 class = "border-bottom pb-3 mb-3">こちらは、京都の草野球チームの選手を募集するサイトです</h3>
+      <h3 class = "border-bottom pb-3 mb-3">自由に募集してメンバーを集めてください</h3>
+  </div>
+  <div class="border">
+    <h2>チーム情報</h2>
+    <%= render 'team_informations/team_informations2', team_informations: @team_informations %>
+    
   </div>
 <% else %>
   <div class="offset-md-8 col-md-4 pb-4">

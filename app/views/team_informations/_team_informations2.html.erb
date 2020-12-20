@@ -1,0 +1,13 @@
+
+<% team_informations.each do |team_information| %>
+  <div>
+    <%= link_to team_information.user.name, user_path(team_information.user) %> <span class="text-muted">posted at <%= team_information.created_at %></span>
+  </div>
+  <% if team_information.is_finished? %>
+    <p><span class="badge badge-warning">受付終了</span></p>
+  <% end %>
+  <p>チーム名：<%= team_information.name %></p>
+  <p>地域：<%= team_information.region %></p>
+  <p>募集人数：<%= team_information.recruiting_people %></p>
+<% end %>
+<%= paginate team_informations %>
