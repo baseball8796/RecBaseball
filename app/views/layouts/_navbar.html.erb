@@ -8,7 +8,7 @@
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ユーザー</a>
                   <ul class="dropdown-menu dropdown-menu-right">
                       <li class="dropdown-item"><%= link_to 'ユーザー情報', user_path(current_user) %></li>
-                      <li class="dropdown-item"><%= link_to 'メッセージ一覧', '#' %></li>
+                      <li class="dropdown-item"><%= link_to 'メッセージ一覧', message_lists_user_path(current_user) %></li>
                       <li class="dropdown-divider"></li>
                       <li class="dropdown-item"><%= link_to 'Logout', logout_path, method: :delete %></li>
                   </ul>

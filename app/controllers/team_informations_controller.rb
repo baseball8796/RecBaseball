@@ -6,10 +6,11 @@ class TeamInformationsController < ApplicationController
   end
 
   def create
+    @user = User.find(current_user.id)
     @team_information = current_user.team_informations.build(team_information_params)
     if @team_information.save
       flash[:success] = 'メッセージを投稿しました。'
-      redirect_to root_path
+      redirect_to @user
     else
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
       render :new
@@ -21,11 +22,12 @@ class TeamInformationsController < ApplicationController
   end
 
   def update
+    @user = User.find(current_user.id)
     @team_information = TeamInformation.find(params[:id])
     
     if @team_information.update(team_information_params)
       flash[:success] = 'チーム情報は正常に更新されました'
-      redirect_to root_path
+      redirect_to @user
     else
       flash.now[:danger] = 'チーム情報は更新されませんでした'
       render :edit
@@ -39,10 +41,11 @@ class TeamInformationsController < ApplicationController
   end
  
  def is_finished
+    @user = User.find(current_user.id)
     @team_information = TeamInformation.find(params[:id])
     if @team_information.update(is_finished: true)
       flash[:success] = '受付を終了しました'
-      redirect_to root_path
+      redirect_to @user
     end
  end
   

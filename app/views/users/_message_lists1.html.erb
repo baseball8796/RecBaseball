@@ -1,0 +1,9 @@
+<h3>招待されたチャットルームでの会話</h3>
+<% messages.each do |message| %>
+    <ul>
+        <li><%= message.user.name %> : <%= message.body %><span class="text-muted">　　　　書き込んだ時間： <%= message.created_at %></span></li>
+        <div>
+            <%= link_to "ルームに遷移する", room_path(@room1) %>
+        </div>
+    </ul>
+<% end %>

@@ -25,10 +25,6 @@ class User < ApplicationRecord
     end
   end
   
-  def close(other_user)
-    room = self.rooms.find_by(participate_id: other_user.id)
-    room.destroy if room
-  end
   
   def participate?(other_user)
     self.participatings.include?(other_user)

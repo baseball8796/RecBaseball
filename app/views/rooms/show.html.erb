@@ -1,2 +1,13 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<p>< <%= @room.user.name =%>と<%= @room.participate.name %>のチャットルーム ></p>
+
+<%= form_with(model: @message, local: true) do |f| %>
+    <%= f.text_field :body, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "投稿",class: 'form-submit'%>
+<% end %>
+
+
+<p class= mt-4>メッセージ一覧</p>
+<%= render 'messages/messages', messages: @message_list %>
+
+<%= link_to 'このルームを削除する', @room, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

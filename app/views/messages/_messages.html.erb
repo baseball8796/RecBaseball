@@ -1,0 +1,5 @@
+<% messages.each do |message| %>
+    <p><%= message.user.name %> : <%= message.body %></p>
+<% end %>
+
+<%= paginate messages %>  

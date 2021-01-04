@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     member do
       get :participatings
       get :participateds
+      get :message_lists
     end
   end  
   resources :team_informations, only: [:new, :create, :destroy, :edit, :update] 
@@ -21,5 +22,5 @@ Rails.application.routes.draw do
   
   resources :rooms, only: [:show, :create, :destroy]
   
-  resources :messages, only: [:index, :create]
+  resources :messages, only: [:create]
 end
