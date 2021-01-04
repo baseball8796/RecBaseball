@@ -43,9 +43,9 @@ class UsersController < ApplicationController
   
   def message_lists
     @room = Room.find_by(user_id: current_user)
-    @message = @room.messages.order(id: :desc).page(params[:page]).per(20)
+    @message = @room.messages.order(id: :desc).page(params[:page]).per(5)
     @room1 = Room.find_by(participate_id: current_user)
-    @message1 = @room1.messages.order(id: :desc).page(params[:page]).per(20)
+    @message1 = @room1.messages.order(id: :desc).page(params[:page]).per(5)
   end
   
   
