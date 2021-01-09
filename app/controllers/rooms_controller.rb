@@ -20,7 +20,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room.destroy
     flash[:success] = 'ルームを削除しました。'
-    redirect_to root_path
+    redirect_to user_path(current_user.id)
   end
 end
 
