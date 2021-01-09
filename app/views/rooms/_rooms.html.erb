@@ -3,7 +3,7 @@
   <% if user_id = current_user %>
   <ul>
     <li><%= room.participate.name %>とのチャット</li>
-    <%= link_to 'chatを始める', room_path(room.id) %>
+    <%= link_to 'チャットを始める', room_path(room.id) %>
   </ul>
   <% end %>
 <% end %>

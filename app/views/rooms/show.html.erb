@@ -1,7 +1,7 @@
 <p>< <%= @room.user.name =%>と<%= @room.participate.name %>のチャットルーム ></p>
 
 <%= form_with(model: @message, local: true) do |f| %>
-    <%= f.text_field :body, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+    <%= f.text_area :body, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-control" %>
     <%= f.hidden_field :room_id, value: @room.id %>
     <%= f.submit "投稿",class: 'form-submit'%>
 <% end %>
@@ -10,4 +10,4 @@
 <p class= mt-4>メッセージ一覧</p>
 <%= render 'messages/messages', messages: @message_list %>
 
-<%= link_to '削除', @room, method: :delete %>
+<%= link_to 'このチャットルームを削除する', @room, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>

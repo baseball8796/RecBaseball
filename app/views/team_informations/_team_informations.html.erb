@@ -8,10 +8,10 @@
         <p>募集人数：<%= team_information.recruiting_people %></p>
         <p>本文：<%= team_information.content %></p>
         <% if current_user == team_information.user %>
-            <%= link_to 'チーム情報を編集', edit_team_information_path(team_information),class: 'btn btn-lg btn-primary btn-sm' %>
+            <%= link_to 'チーム情報を編集', edit_team_information_path(team_information),class: 'btn btn-lg btn-secondary btn-sm' %>
             <%= link_to "削除", team_information, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
             <% unless team_information.is_finished? %>
-                <%= link_to "受付終了", team_information, method: :is_finished, data: { confirm: "You sure?" }, class: 'btn btn-success btn-sm' %>
+                <%= link_to "受付終了", team_information, method: :is_finished, data: { confirm: "You sure?" }, class: 'btn btn-warning btn-sm' %>
             <% end %>
         <% end %>
     </div>
