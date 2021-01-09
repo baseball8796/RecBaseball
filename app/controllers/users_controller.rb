@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in,only: [:show, :new, :edit, :message_lists]
+  before_action :require_user_logged_in,only: [:show, :edit, :message_lists]
+  before_action :correct_user, only: [:edit, :update, :message_lists]
+  
   def show
     @user = User.find(params[:id])
     @team_informations = @user.team_informations.order(id: :desc).page(params[:page]).per(1)
@@ -42,10 +44,7 @@ class UsersController < ApplicationController
   end
   
   def message_lists
-    @room = Room.find_by(user_id: current_user)
-    @message = @room.messages.order(id: :desc).page(params[:page]).per(5)
-    @room1 = Room.find_by(participate_id: current_user)
-    @message1 = @room1.messages.order(id: :desc).page(params[:page]).per(5)
+    @message_lists = current_user.feed_messages.order(id: :desc).page(params[:page]).per(5)
   end
   
   
@@ -54,4 +53,10 @@ private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :age, :baseball_experience)
   end
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to root_path unless current_user?(@user)
+  end
+  
 end

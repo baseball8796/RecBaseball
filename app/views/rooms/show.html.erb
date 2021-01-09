@@ -10,4 +10,4 @@
 <p class= mt-4>メッセージ一覧</p>
 <%= render 'messages/messages', messages: @message_list %>
 
-<%= link_to 'このルームを削除する', @room, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<%= link_to '削除', @room, method: :delete %>

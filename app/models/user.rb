@@ -13,11 +13,11 @@ class User < ApplicationRecord
   end
   
   has_many :team_informations
-  has_many :rooms
+  has_many :rooms, dependent: :destroy
   has_many :participatings, through: :rooms, source: :participate
   has_many :reverses_of_room, class_name: 'Room', foreign_key: 'participate_id'
   has_many :participateds, through: :reverses_of_room, source: :user
-  has_many :messages
+  has_many :messages, dependent: :destroy
   
   def participate(other_user)
     unless self == other_user
@@ -30,4 +30,7 @@ class User < ApplicationRecord
     self.participatings.include?(other_user)
   end
   
+  def feed_messages
+    Message.where(user_id: self.participated_ids + [self.id])
+  end
 end
