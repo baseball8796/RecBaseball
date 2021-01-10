@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: ブログ本文
+        password: パスワード
+        age: 年齢
+        baseball_experience: 野球経験
+   

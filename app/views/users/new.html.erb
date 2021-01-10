@@ -5,34 +5,35 @@
   <div class="col-sm-6 offset-sm-3">
 
     <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
       
       <div class="form-group">
-        <%= f.label :name, '名前' %>
+        <%= f.label :name, '名前(必須）' %>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :email, 'メールアドレス' %>
+        <%= f.label :email, 'メールアドレス（必須）' %>
         <%= f.email_field :email, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password, 'パスワード' %>
+        <%= f.label :password, 'パスワード（必須）' %>
         <%= f.password_field :password, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password_confirmation, 'パスワード確認' %>
+        <%= f.label :password_confirmation, 'パスワード確認（必須）' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
       
        <div class="form-group">
-        <%= f.label :age, '年齢' %>
+        <%= f.label :age, '年齢（必須）' %>
         <%= f.text_field :age, class: 'form-control' %>歳
       </div>
 
       <div class="form-group">
-        <%= f.label :baseball_experience, '野球経験' %>
+        <%= f.label :baseball_experience, '野球経験（必須）' %>
         <%= f.text_field :baseball_experience, class: 'form-control' %>（ありorなし）
       </div> 
       
