@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @team_informations = @user.team_informations.order(id: :desc).page(params[:page]).per(1)
+    @team_informations = @user.team_informations.order(id: :desc).page(params[:page]).per(10)
     @rooms = @user.rooms.order(id: :desc).page(params[:page]).per(3)
     @participate_user = Room.where(participate_id: current_user)
     @participate_room = @participate_user.order(id: :desc).page(params[:page]).per(3)

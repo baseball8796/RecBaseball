@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @message_list = @room.messages.order(id: :desc).page(params[:page]).per(10)
-    @message = Message.create
+    @message = current_user.messages.build
   end
 
   def create

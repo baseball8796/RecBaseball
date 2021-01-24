@@ -9,10 +9,10 @@ class TeamInformationsController < ApplicationController
     @user = User.find(current_user.id)
     @team_information = current_user.team_informations.build(team_information_params)
     if @team_information.save
-      flash[:success] = 'メッセージを投稿しました。'
+      flash[:success] = 'チームを登録しました。'
       redirect_to @user
     else
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      flash.now[:danger] = 'チームに登録に失敗しました。'
       render :new
     end
   end

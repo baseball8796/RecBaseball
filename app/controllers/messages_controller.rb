@@ -1,13 +1,15 @@
 class MessagesController < ApplicationController
   
   def create
-    if Room.where(room_id: params[:room_id])
-      @message = Message.create(params.require(:message).permit(:user_id, :body, :room_id).merge(user_id: current_user.id))
+    @message = current_user.messages.build(params.require(:message).permit(:user_id, :body, :room_id).merge(user_id: current_user.id))
+    if @message.save
       redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = "メッセージ送信に失敗しました。"
-      redirect_back(fallback_location: root_path)
+      @room = Room.find(params[:message][:room_id])
+      @message_list = @room.messages.order(id: :desc).page(params[:page]).per(10)
+      flash.now[:danger] = "メッセージ送信に失敗しました。"
+      render "/rooms/show"
     end
   end
-  
+
 end

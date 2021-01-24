@@ -6,7 +6,7 @@
         <p>チーム名：<%= team_information.name %></p>
         <p>地域：<%= team_information.region %></p>
         <p>募集人数：<%= team_information.recruiting_people %></p>
-        <p>本文：<%= team_information.content %></p>
+        <p>本文：<br> <%= safe_join(team_information.content.split("\n"),tag(:br)) %></p>
         <% if current_user == team_information.user %>
             <%= link_to 'チーム情報を編集', edit_team_information_path(team_information),class: 'btn btn-lg btn-secondary btn-sm' %>
             <%= link_to "削除", team_information, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>

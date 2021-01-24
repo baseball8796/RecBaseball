@@ -1,7 +1,10 @@
 <p>< <%= @room.user.name =%>と<%= @room.participate.name %>のチャットルーム ></p>
 
-<%= form_with(model: @message, local: true) do |f| %>
-    <%= f.text_area :body, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-control" %>
+
+<%= form_with model: @message, local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    
+    <%= f.text_area :body, class:"form-control" %>
     <%= f.hidden_field :room_id, value: @room.id %>
     <%= f.submit "投稿",class: 'form-submit'%>
 <% end %>
