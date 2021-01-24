@@ -1,5 +1,5 @@
 <% messages.each do |message| %>
-    <p><%= message.user.name %> : <%= message.body %></p>
+    <p><%= message.user.name %> : <%= safe_join(message.body.split("\n"),tag(:br)) %></p>
 <% end %>
 
 <%= paginate messages %>  
